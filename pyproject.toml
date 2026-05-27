@@ -43,6 +43,7 @@ packages = ["src/renwei_zh"]
 [tool.hatch.build.targets.sdist]
 include = [
   "src",
+  "assets",
   "SKILL.md",
   "README.md",
   "references",

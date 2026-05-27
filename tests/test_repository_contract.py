@@ -19,6 +19,7 @@ def test_pattern_catalog_is_single_default_source() -> None:
 def test_required_repository_files_exist() -> None:
     required = [
         "README.md",
+        "assets/renwei-zh-hero.png",
         "SKILL.md",
         "pyproject.toml",
         "CONTRIBUTING.md",
