@@ -1,0 +1,8 @@
+interface:
+  display_name: "Renwei Zh"
+  short_description: "中文写作去机器味与事实安全审计"
+  brand_color: "#1F6FEB"
+  default_prompt: "Use $renwei-zh to audit and revise this Chinese draft while preserving all facts."
+
+policy:
+  allow_implicit_invocation: true

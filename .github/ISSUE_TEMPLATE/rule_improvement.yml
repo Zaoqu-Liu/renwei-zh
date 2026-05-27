@@ -1,0 +1,41 @@
+name: Rule improvement
+description: Propose a pattern, false-positive fix, or scenario rule
+title: "[Rule]: "
+labels: ["rules"]
+body:
+  - type: dropdown
+    id: scenario
+    attributes:
+      label: Scenario
+      options:
+        - general
+        - business
+        - academic
+        - official
+        - wechat
+        - zhihu
+        - xhs
+        - creative
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Minimal example
+      description: Provide a short text sample. Remove private or sensitive data.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected handling
+      description: Should this be flagged, ignored, or handled differently?
+    validations:
+      required: true
+  - type: textarea
+    id: false_positive
+    attributes:
+      label: False-positive risk
+      description: Where could this rule be wrong?
+    validations:
+      required: false

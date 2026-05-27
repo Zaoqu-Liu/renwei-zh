@@ -1,0 +1,196 @@
+{
+  "version": "2026.05.27",
+  "pattern_sets": [
+    {
+      "id": "internet_buzz",
+      "label": "互联网黑话",
+      "severity": "red",
+      "weight": 1.4,
+      "scenarios": ["all"],
+      "patterns": [
+        {"regex": "(赋能|抓手|闭环|沉淀|链路|心智|矩阵|生态|势能|底层逻辑|护城河|价值锚|全链路|全场景|端到端)"},
+        {"regex": "(致力于|彰显|铸就|谱写|绘就|引领|开创).{0,8}(新篇章|新局面|未来|生态)?"}
+      ]
+    },
+    {
+      "id": "official_tone",
+      "label": "党政公文腔",
+      "severity": "red",
+      "weight": 1.2,
+      "scenarios": ["all"],
+      "allow_in": ["official"],
+      "patterns": [
+        {"regex": "(深入贯彻|扎实推进|奋力开创|统筹推进|协同发力|压紧压实|切实有效|新征程|新篇章)"}
+      ]
+    },
+    {
+      "id": "academic_cliche",
+      "label": "学术套话",
+      "severity": "yellow",
+      "weight": 0.8,
+      "scenarios": ["all"],
+      "allow_in": ["academic"],
+      "patterns": [
+        {"regex": "(笔者|本人认为|不难看出|由此可见|综上所述|毋庸置疑|显而易见|众所周知|值得注意的是|需要指出的是)"}
+      ]
+    },
+    {
+      "id": "preposition_disease",
+      "label": "介词病",
+      "severity": "yellow",
+      "weight": 0.7,
+      "scenarios": ["all"],
+      "allow_in": ["academic", "official"],
+      "patterns": [
+        {"regex": "对.{1,12}(进行|加以|予以|实施)"},
+        {"regex": "在.{1,10}(方面|过程中|层面|维度上)"}
+      ]
+    },
+    {
+      "id": "translation_tone",
+      "label": "中文译制腔",
+      "severity": "red",
+      "weight": 1.1,
+      "scenarios": ["all"],
+      "patterns": [
+        {"regex": "(巨大|庞大|惊人|卓越|极致|不容置喙|不容忽视|不可或缺|在某种程度上|总体而言|通常情况下)"},
+        {"regex": "(重塑|重构|重新定义|重新审视).{0,12}(行业|格局|关系|未来)?"}
+      ]
+    },
+    {
+      "id": "abstract_universal_verb",
+      "label": "抽象万能动词",
+      "severity": "red",
+      "weight": 1.1,
+      "scenarios": ["all"],
+      "patterns": [
+        {"regex": "(激发|激活|实现|达成|推动|发挥|开展|提升|助力|打造|护航|营造|构建|持续优化)了?"}
+      ]
+    },
+    {
+      "id": "product_pr",
+      "label": "产品宣传腔",
+      "severity": "red",
+      "weight": 1.3,
+      "scenarios": ["business", "all"],
+      "patterns": [
+        {"regex": "(核心定位|核心理念|设计理念|统一理念|一次撰写|多重用途|全链路复用|重新定义|颠覆式|全栈解决方案)"}
+      ]
+    },
+    {
+      "id": "extreme_judgment",
+      "label": "极值判断壳",
+      "severity": "red",
+      "weight": 1.2,
+      "scenarios": ["all"],
+      "patterns": [
+        {"regex": "(真正.{1,15}的是|最.{1,10}的(?:地方)?(?:在|是)于?|.{1,10}之处在于|更.{1,10}的是|关键并不在.{1,12}而(?:在|是))"}
+      ]
+    },
+    {
+      "id": "personified_negation",
+      "label": "拟人化否定金句",
+      "severity": "red",
+      "weight": 1.2,
+      "scenarios": ["all"],
+      "patterns": [
+        {"regex": "(血管|数据|病毒|算法|分子|时间|历史|文明|大脑|市场)不(认|在乎|看|理|管|关心|相信|懂)"}
+      ]
+    },
+    {
+      "id": "negative_parallel",
+      "label": "否定式排比",
+      "severity": "red",
+      "weight": 1.1,
+      "scenarios": ["all"],
+      "patterns": [
+        {"regex": "(不仅仅是.{1,30}更是|这不只是.{1,30}而是|不是.{1,20}而是|not just.{1,30}but)"}
+      ]
+    },
+    {
+      "id": "conclusion_overclaim",
+      "label": "结论过度笃定",
+      "severity": "red",
+      "weight": 1.4,
+      "scenarios": ["all"],
+      "patterns": [
+        {"regex": "(远大于|远超|完全归因|仅反映|仅来源|可适用于任何|可迁移至任何|必然导致|彻底解决)"}
+      ]
+    },
+    {
+      "id": "markdown_leak",
+      "label": "Markdown 结构泄漏",
+      "severity": "yellow",
+      "weight": 0.6,
+      "scenarios": ["all"],
+      "patterns": [
+        {"regex": "^\\s*[🚀✨📊💡🎯🔥⭐]", "weight": 0.8},
+        {"regex": "\\*\\*[^*]{2,14}\\*\\*\\s*[：:]"},
+        {"regex": "^[^：\\n]{2,12}：[^（\\d]", "weight": 0.7}
+      ]
+    },
+    {
+      "id": "perfect_ending",
+      "label": "完美收尾",
+      "severity": "red",
+      "weight": 1.0,
+      "scenarios": ["all"],
+      "patterns": [
+        {"regex": "(展望未来|未来可期|砥砺前行|谱写.{0,8}新篇章|希望.{0,8}有所帮助|如果您还有.{0,8}请随时)"}
+      ]
+    },
+    {
+      "id": "placeholder_residue",
+      "label": "模板占位符残留",
+      "severity": "red",
+      "weight": 2.0,
+      "scenarios": ["all"],
+      "patterns": [
+        {"regex": "(XX|X[0-9]+|X 月|X 日|\\[(?:产品名|品牌|姓名|TODO|FIXME)\\]|\\{\\{[^}]+\\}\\}|\\$\\{[^}]+\\})"}
+      ]
+    }
+  ],
+  "connectors": {
+    "contrast": ["然而", "不过", "但是", "可是", "只是"],
+    "parallel": ["此外", "同时", "另外", "与此同时", "另一方面", "再者"],
+    "causal": ["因此", "所以", "因而", "故而", "由此", "从而"],
+    "progressive": ["而且", "并且", "甚至", "更", "再加上"],
+    "ai_preface": ["值得注意的是", "需要指出的是", "有趣的是", "值得一提的是", "需要说明的是"],
+    "ai_closing": ["综上所述", "总而言之", "总的来说", "总体而言", "不难看出", "由此可见"]
+  },
+  "model_fingerprints": {
+    "Claude": [
+      {"label": "谄媚确认", "regex": "(?:你|您).{0,2}说得(?:完全|绝对)?(?:正确|对)", "weight": 0.3},
+      {"label": "客服收尾", "regex": "希望.{0,8}有所帮助|如(?:果|有).{0,8}问题(?:请|随时)", "weight": 0.2},
+      {"label": "平衡癖", "regex": "^(?:虽然|尽管).{1,30}(?:但|然而).{1,30}(?:也|同样)", "weight": 0.15}
+    ],
+    "GPT": [
+      {"label": "not just but", "regex": "(?:这|it).{0,3}(?:不仅仅|不只是|isn't just).{1,30}(?:更是|而是|but)", "weight": 0.35},
+      {"label": "delve/tapestry", "regex": "(delve|tapestry|realm|underscore|meticulous|intricate)", "weight": 0.2},
+      {"label": "总而言之", "regex": "(综上所述|总而言之)", "weight": 0.1}
+    ],
+    "DeepSeek": [
+      {"label": "意象堆叠", "regex": "(琥珀|菌丝|褶皱|量子|深渊|星尘|虫洞|奇点|熵增|傅里叶|薛定谔|超新星|中微子)", "weight": 0.4},
+      {"label": "三个维度", "regex": "[三3]个(?:维度|层面|视角|角度|方向)", "weight": 0.15},
+      {"label": "在 X 的 Y 里", "regex": "在.{2,8}的.{2,8}(?:里|中).{2,15}(?:凝望|眺望|沉思|徘徊)", "weight": 0.2}
+    ],
+    "Agent": [
+      {"label": "进度旁白", "regex": "^(?:我会|让我|接下来我)(?:先)?(?:读|看|检查|分析|调用)", "weight": 0.4},
+      {"label": "英文 preamble", "regex": "^(?:I'll|Let me|I'm going to)\\s+(?:start|check|read|analyze)", "weight": 0.3}
+    ]
+  },
+  "friction_signals": {
+    "uncertainty": ["我(?:也)?(?:不太)?确定", "我(?:其实)?(?:也)?(?:还)?没(?:完全)?(?:想明白|搞明白|弄清楚)", "(?:说不|讲不|搞不)(?:清楚|准|明白)"],
+    "constraint": ["但(?:边界|限制|问题|风险)是", "(?:外部验证|样本量|置信区间|误差|失败|返工|卡点)"],
+    "specific_scene": ["(?:凌晨|早上|中午|下午|傍晚|晚上|深夜)\\s*[一二三四五六七八九十0-9]{1,2}\\s*[点时分]", "\\d+\\s*(?:号|楼|层|栋|室|元|块|万|亿|%)"],
+    "self_correction": ["准确说", "更准确地说", "前面这句不太对", "我收回", "换个说法"]
+  },
+  "fact_risk_patterns": [
+    {"label": "数字或比例", "regex": "\\d+(?:\\.\\d+)?\\s*(?:%|元|块|万|亿|例|人|天|个月|年|倍|小时|分钟)?"},
+    {"label": "年份日期", "regex": "(?:19|20)\\d{2}\\s*年|\\d{1,2}\\s*月\\s*\\d{1,2}\\s*日"},
+    {"label": "引用来源", "regex": "(麦肯锡|Gartner|Forrester|Nature|Science|NEJM|Lancet|arXiv|doi\\.org|研究表明|数据显示|业内专家)"},
+    {"label": "统计术语", "regex": "(p\\s*[<=>]\\s*0\\.\\d+|95%\\s*CI|置信区间|χ²|AUC|OR|HR)"}
+  ],
+  "nominalization_suffixes": ["性", "化", "度", "感", "力"],
+  "nominalization_whitelist": ["可能性", "必要性", "准确性", "规范化", "标准化", "灵活性"]
+}

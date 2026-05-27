@@ -1,0 +1,70 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "renwei-zh"
+version = "0.1.0"
+description = "Evidence-based Chinese writing audit and revision skill for preserving human voice."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Zaoqu Liu" }]
+keywords = ["chinese", "writing", "skill", "claude", "codex", "humanize", "style"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Education",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: Chinese (Simplified)",
+  "Natural Language :: Chinese (Traditional)",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Text Processing :: Linguistic"
+]
+dependencies = []
+
+[project.optional-dependencies]
+zh = ["jieba>=0.42.1"]
+dev = ["build>=1.2", "pytest>=8.0", "ruff>=0.6.0", "mypy>=1.11"]
+
+[project.scripts]
+renwei-zh = "renwei_zh.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Zaoqu-Liu/renwei-zh"
+Repository = "https://github.com/Zaoqu-Liu/renwei-zh"
+Issues = "https://github.com/Zaoqu-Liu/renwei-zh/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/renwei_zh"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src",
+  "SKILL.md",
+  "README.md",
+  "references",
+  "examples",
+  "tests",
+  "LICENSE"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_ignores = true
+warn_return_any = true

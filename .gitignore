@@ -1,0 +1,15 @@
+.DS_Store
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+htmlcov/
+.coverage
+report.html
+voice_profile.json
